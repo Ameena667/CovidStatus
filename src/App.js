@@ -121,7 +121,11 @@ class App extends React.Component {
         ) : (
           <div>
             <h1>Recent Covid-19 Status</h1>
-
+            <h3>
+              choose your sort by attribute and order of sorting to get the
+              results
+            </h3>
+            <br />
             <label id="labels">
               Sort By :-
               <select onChange={this.sortArray}>
@@ -156,10 +160,6 @@ class App extends React.Component {
             </label>
             <br />
 
-            <h3>
-              choose your sort by attribute and order of sorting to get the
-              results
-            </h3>
             <SearchResults
               temp_search={this.state.temp_search}
               temp_click={this.state.temp_click}
