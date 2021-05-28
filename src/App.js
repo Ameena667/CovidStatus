@@ -12,6 +12,7 @@ class App extends React.Component {
       temp_search: "",
     };
   }
+  //loading data from api
   async componentDidMount() {
     const url = "https://api.covid19api.com/summary";
     // await used to wait until loading of data completes
@@ -27,18 +28,20 @@ class App extends React.Component {
     console.log(data);
   }
   //str.split("").reverse().join("");
+  //function for formatting date
   dateFormat(date) {
     var year = date.slice(0, 4);
     var month = date.slice(4, 7);
     var day = date.slice(8, 10);
     return day + month + "-" + year;
   }
+  //just storing search input field value
   search = (e) => {
     this.setState({
       temp_search: e.target.value,
     });
   };
-
+  // function for storing sort by attribute
   sortArray = (e) => {
     //list.sort((a, b) => (a.NewConfirmed > b.NewConfirmed ? 1 : -1));
     //console.log(list);
@@ -48,7 +51,8 @@ class App extends React.Component {
       temp_task: e.target.value,
     });
   };
-
+  
+  //function for performing actual sort on data
   order = (e) => {
     const list = Object.assign([], this.state.data);
     //if string can be converted into variable name it will completed
@@ -126,6 +130,7 @@ class App extends React.Component {
               results
             </h3>
             <br />
+            {/*code for displaying sort by field*/}
             <label id="labels">
               Sort By :-
               <select onChange={this.sortArray}>
@@ -140,6 +145,7 @@ class App extends React.Component {
                 <option value="TotalDeaths">TotalDeaths</option>
               </select>
             </label>
+            {/* code for displaying data  order field*/}
             <label id="labels">
               Order :-
               <select onChange={this.order}>
@@ -150,7 +156,7 @@ class App extends React.Component {
                 <option value="D">Decending</option>
               </select>
             </label>
-
+            {/*code for displaying search input field*/}
             <label id="labels">
               Search:-
               <input
@@ -159,7 +165,7 @@ class App extends React.Component {
               />
             </label>
             <br />
-
+            {/*code for displaying search results*/}
             <SearchResults
               temp_search={this.state.temp_search}
               temp_click={this.state.temp_click}
